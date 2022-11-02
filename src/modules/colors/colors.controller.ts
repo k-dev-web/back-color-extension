@@ -4,14 +4,13 @@ import {ColorsService} from './colors.service';
 import {Colors as ColorsEntity} from './colors.entity';
 import {ColorsDto} from './dto/colors.dto';
 import {JwtAuthGuard} from "../auth/jwt.strategy";
-import {LocalAuthGuard} from "../auth/local.strategy";
 
 @Controller('colors')
 export class ColorsController {
     constructor(private readonly colorsService: ColorsService) {
     }
 
-   // @UseGuards(JwtAuthGuard)
+    @UseGuards(JwtAuthGuard)
     @Get()
     async findAll(@Query() page:any, @Request() req) {
 
